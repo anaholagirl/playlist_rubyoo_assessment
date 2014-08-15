@@ -11,4 +11,8 @@ describe 'Song' do
     test_song = Song.new({:name => 'Love Story'})
     expect(test_song.name).to eq 'Love Story'
   end
+
+  it 'returns and empty array of songs' do
+    expect(Song.all).to eq []
+  end
 end
