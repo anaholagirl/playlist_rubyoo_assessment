@@ -12,4 +12,8 @@ class Artist
     @name = attributes[:name]
     @songs = []
   end
+
+  def save
+    @@all_artists << self
+  end
 end

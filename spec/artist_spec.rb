@@ -16,4 +16,10 @@ describe 'Artist' do
   it 'returns an empty array of artists' do
     expect(Artist.all).to eq []
   end
+
+  it 'creates a new artist' do
+    test_artist = Artist.new({:name => 'Taylor Swift'})
+    test_artist.save
+    expect(Artist.all).to eq [test_artist]
+  end
 end
