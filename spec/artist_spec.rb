@@ -12,4 +12,8 @@ describe 'Artist' do
     test_artist = Artist.new({:name => 'Taylor Swift'})
     expect(test_artist.name).to eq 'Taylor Swift'
   end
+
+  it 'returns an empty array of artists' do
+    expect(Artist.all).to eq []
+  end
 end
