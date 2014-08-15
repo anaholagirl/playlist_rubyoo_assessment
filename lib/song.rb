@@ -11,4 +11,8 @@ class Song
   def initialize(attributes)
     @name = attributes[:name]
   end
+
+  def save
+    @@all_songs << self
+  end
 end

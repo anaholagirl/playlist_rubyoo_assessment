@@ -15,4 +15,10 @@ describe 'Song' do
   it 'returns and empty array of songs' do
     expect(Song.all).to eq []
   end
+
+  it 'creates a new song' do
+    test_song = Song.new({:name => 'Love Story'})
+    test_song.save
+    expect(Song.all).to eq [test_song]
+  end
 end
