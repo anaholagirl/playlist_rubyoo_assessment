@@ -3,7 +3,7 @@ require './lib/song'
 require 'pry'
 
 def main_menu
-    loop do
+
     choice = nil
     until choice == 'e'
       puts "Press the corresponding letter to select choice."
@@ -34,7 +34,7 @@ def main_menu
       end
     end
   end
-end
+# end
 
 def add_artist
   puts "What is the name of the artist you want to add?"
@@ -50,8 +50,8 @@ def add_song_title
   Artist.all.each do |artist|
     if artist.name == artist_name
       @selected_artist = artist
-    else puts "\n\nThis artist is not in your list.  Please add artist to list or choose another artist.\n\n "
-      main_menu
+    else puts "\n\nThis artist is not in your list, but can now been added.\n\n "
+      add_artist
     end
   end
   puts "What is the name of the song for this artist?"
@@ -66,6 +66,12 @@ def list_artists
   puts "\n\nHere is a list of all artists currently in your playlist: \n\n"
   Artist.all.each { |artist| puts artist.name }
     puts "\n\n"
+end
+
+def list_songs
+  puts "\n\nHere is a list of all songs currently in your playlist: \n\n"
+  Song.all.each { |song| puts song.name }
+    puts"\n\n"
 end
 main_menu
 
