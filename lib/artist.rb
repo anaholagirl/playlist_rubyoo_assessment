@@ -16,4 +16,12 @@ class Artist
   def save
     @@all_artists << self
   end
+
+  def ==(another_artist)
+    self.name == another_artist.name
+  end
+
+  # def add_song(song)
+  #   @songs << Song.new({:name => song})
+  # end
 end

@@ -21,4 +21,12 @@ describe 'Song' do
     test_song.save
     expect(Song.all).to eq [test_song]
   end
+
+  it 'sees a song as the same if it has the same name' do
+    test_song1 = Song.new({:name => 'Love Story'})
+    test_song2 = Song.new({:name => 'Love Story'})
+    test_song1.save
+    test_song2.save
+    expect(test_song1).to eq test_song2
+  end
 end

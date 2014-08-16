@@ -15,4 +15,8 @@ class Song
   def save
     @@all_songs << self
   end
+
+  def ==(another_song)
+    self.name == another_song.name
+  end
 end

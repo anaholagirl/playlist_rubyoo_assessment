@@ -22,4 +22,19 @@ describe 'Artist' do
     test_artist.save
     expect(Artist.all).to eq [test_artist]
   end
+
+  it 'see an artist as the same if it has the same name' do
+    test_artist1 = Artist.new({:name => 'Taylor Swift'})
+    test_artist2 = Artist.new({:name => 'Taylor Swift'})
+    test_artist1.save
+    test_artist2.save
+    expect(test_artist1).to eq test_artist2
+  end
+
+  # it 'adds songs to a particular artist' do
+  #   test_artist = Artist.new({:name => 'Taylor Swift'})
+  #   test_artist.save
+  #   test_song = Song.new({:name => 'Love Story'})
+  #   expect(test_artist.add_song(test_song.name)).to eq [test_song]
+  # end
 end
