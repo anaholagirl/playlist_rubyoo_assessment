@@ -61,5 +61,11 @@ def add_song_title
   @selected_artist.add_song(new_song.name)
   puts "\n\n'#{song_title}' has been saved into your playlist.\n\n"
 end
+
+def list_artists
+  puts "\n\nHere is a list of all artists currently in your playlist: \n\n"
+  Artist.all.each { |artist| puts artist.name }
+    puts "\n\n"
+end
 main_menu
 
