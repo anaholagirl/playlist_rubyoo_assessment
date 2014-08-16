@@ -31,10 +31,10 @@ describe 'Artist' do
     expect(test_artist1).to eq test_artist2
   end
 
-  # it 'adds songs to a particular artist' do
-  #   test_artist = Artist.new({:name => 'Taylor Swift'})
-  #   test_artist.save
-  #   test_song = Song.new({:name => 'Love Story'})
-  #   expect(test_artist.add_song(test_song.name)).to eq [test_song]
-  # end
+  it 'adds songs to a particular artist' do
+    test_artist = Artist.new({:name => 'Taylor Swift'})
+    test_artist.save
+    test_song = Song.new({:name => 'Love Story'})
+    expect(test_artist.add_song(test_song.name)).to eq [test_song]
+  end
 end

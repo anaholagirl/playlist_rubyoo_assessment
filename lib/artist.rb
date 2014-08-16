@@ -21,7 +21,7 @@ class Artist
     self.name == another_artist.name
   end
 
-  # def add_song(song)
-  #   @songs << Song.new({:name => song})
-  # end
+  def add_song(song)
+    @songs << Song.new({:name => song})
+  end
 end
