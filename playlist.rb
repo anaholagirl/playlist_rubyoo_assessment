@@ -3,7 +3,7 @@ require './lib/song'
 require 'pry'
 
 def main_menu
-
+  loop do
     choice = nil
     until choice == 'e'
       puts "Press the corresponding letter to select choice."
@@ -11,7 +11,7 @@ def main_menu
       puts "[n] Add a new song"
       puts "[l] List all artists"
       puts "[v] View all songs"
-      puts "[s] Search for an artist and list songs"
+      puts "[s] list an artist and their songs"
       puts "[x] exit"
 
       choice = gets.chomp
@@ -25,7 +25,7 @@ def main_menu
       when 'v'
         list_songs
       when 's'
-        Search
+        search
       when 'x'
         puts "Good-bye!"
         exit
@@ -34,7 +34,7 @@ def main_menu
       end
     end
   end
-# end
+end
 
 def add_artist
   puts "What is the name of the artist you want to add?"
@@ -42,18 +42,22 @@ def add_artist
   new_artist = Artist.new({:name => artist_name})
   new_artist.save
   puts "\n\n'#{artist_name}' has been added.\n\n"
+  main_menu
 end
 
 def add_song_title
-  puts "What is the name of the artist of this song?"
+  puts "Here is a list of the current artists in your playlist: \n\n"
+  list_artists
+  puts "Which artist would you like to add a song to? \n\n"
+
   artist_name = gets.chomp
+
   Artist.all.each do |artist|
     if artist.name == artist_name
       @selected_artist = artist
-    else puts "\n\nThis artist is not in your list, but can now been added.\n\n "
-      add_artist
     end
   end
+
   puts "What is the name of the song for this artist?"
   song_title = gets.chomp
   new_song = Song.new({:name => song_title})
@@ -72,6 +76,21 @@ def list_songs
   puts "\n\nHere is a list of all songs currently in your playlist: \n\n"
   Song.all.each { |song| puts song.name }
     puts"\n\n"
+end
+
+def search
+  puts "\n\n Which artist would you like a list of songs for?\n\n"
+  list_artists
+  artist_name = gets.chomp
+  puts "\n\n Here are the songs for '#{artist_name}': \n\n"
+  Artist.all.each do |artist|
+    if artist.name == artist_name
+      @selected_artist = artist
+      artist_songs = @selected_artist.list_songs
+      artist_songs.each { |song| puts song.name}
+      puts "\n\n"
+    end
+  end
 end
 main_menu
 
