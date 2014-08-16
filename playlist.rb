@@ -35,4 +35,12 @@ def main_menu
     end
   end
 end
+
+def add_artist
+  puts "What is the name of the artist you want to add?"
+  artist_name = gets.chomp
+  new_artist = Artist.new({:name => 'artist_name'})
+  puts "\n\n'#{artist_name}' has been added.\n\n"
+end
 main_menu
+
