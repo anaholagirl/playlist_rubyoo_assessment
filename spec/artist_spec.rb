@@ -37,4 +37,12 @@ describe 'Artist' do
     test_song = Song.new({:name => 'Love Story'})
     expect(test_artist.add_song(test_song.name)).to eq [test_song]
   end
+
+  it 'searches for an artist and lists all songs associated with that artist' do
+    test_artist = Artist.new({:name => 'Taylor Swift'})
+    test_artist.save
+    test_song = Song.new({:name => 'Love Story'})
+    test_artist.add_song(test_song.name)
+    expect(test_artist.list_songs).to eq [test_song]
+  end
 end

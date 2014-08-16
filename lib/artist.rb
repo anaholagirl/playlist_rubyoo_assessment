@@ -24,4 +24,8 @@ class Artist
   def add_song(song)
     @songs << Song.new({:name => song})
   end
+
+  def list_songs
+    @songs
+  end
 end
